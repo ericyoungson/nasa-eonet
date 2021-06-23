@@ -6,6 +6,9 @@
 
 from decouple import config
 import requests
+from ipyleaflet import Map, basemaps
+get_ipython().system('jupyter labextension install @jupyter-widgets/jupyterlab-manager')
+get_ipython().system('jupyter labextension install jupyter-leaflet')
 
 
 # In[ ]:
@@ -24,5 +27,9 @@ r = requests.get(base_url + API_KEY)
 # In[ ]:
 
 
-r.json()
+center = [37.9780, 122.0311]
+zoom = 5
+
+m = Map(basemap=basemaps.OpenStreetMap.Mapnik, center=center, zoom=zoom)
+display(m)
 
